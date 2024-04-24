@@ -1,0 +1,15 @@
+body {
+    display: grid;
+}
+
+.Page {
+    border: 2px blue solid;
+}
+
+.Page_Title {
+    border: 2px orange solid;
+}
+
+.Item {
+    border: 2px green solid;
+}

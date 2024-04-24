@@ -3,50 +3,61 @@
 //  Values: page data
 let testContainer = {};
 
+scrapeEachPage();
 
-// test show pages
-async function useThis() {
-    // testing adding elements based on number of pages
-    // only allows scraping up to page 10
+async function scrapeEachPage() {
+    // api only allows scraping up to page 10
     for (let i = 1; i <= 10; i++) {
-
         await getEachPage(i);
 
         let whichPage = 'Page' + i;
-        let pageData = testContainer[whichPage];
+
+        // holding array for each person per page, will add div with id of page, and spans containing people
+        // people id will be person_{page}_{number}
+        let allThePeople = [];
+
+        // get each person from page
+        for (let j = 0; j < 20; j++) {
+            allThePeople.push(testContainer[whichPage].items[j].title);
+        }
 
         // first argument is page number for div id, second is what we want to stuff in the html
-        addElement(i, pageData.items[0].nationality);
+        addElement(i, allThePeople);
+    }
+}
 
-        // console.log(testContainer[whichPage]);
-    };
-};
-useThis();
+function addElement(inc, allThePeople) {
+    // inc: integer value of current loop, allThePeople: array containing each record for current page
 
+    // create a new div element with an id of div1, div2, etc..
+    const newDiv = document.createElement('div');
+    let divID = 'div' + inc;
+    newDiv.id = divID;
 
-function addElement(inc, link) {
-  // create a new div element with an id of div1, div2, etc..
-  const newDiv = document.createElement("div");
-  let divID = 'div' + inc; 
-  newDiv.id = divID;
+    let moreHTMLBuilder = `<span id="Page_Title_${inc}" class="Page_Title">##~ PAGE ${inc} ~##</span><br>`;
 
-  // create a new text node and give it some content
-  const newContent = document.createTextNode(`Page: ${inc} / Target: 1 --- This target's nationality is: ${link}`);
+    // On Each Page
+    allThePeople.forEach((element, index) => {
+        moreHTMLBuilder += `<p id="ITEM_${inc}_${index}" class="Item">ITEM ${index}: ${element}</p><br>`;
+    });
 
-  // add the text node to the newly created div
-  newDiv.appendChild(newContent);
+    moreHTMLBuilder += '<br><br>';
 
-  // add the newly created element and its content into the DOM
-  //    added before the bottomDiv, so each new div will go under the previous
-  const bottomDiv = document.getElementById("EXAMPLE");
-  document.body.insertBefore(newDiv, bottomDiv);
-};
+    // console.log(moreHTMLBuilder)
+    newDiv.innerHTML = moreHTMLBuilder;
 
+    const bottomDiv = document.getElementById('EXAMPLE');
+    document.body.insertBefore(newDiv, bottomDiv);
+
+    document.getElementById(divID).classList.add('Page');
+}
 
 async function getEachPage(page) {
-    const response = await fetch("https://api.fbi.gov/wanted/v1/list?page=" + page);
+    const response = await fetch(
+        'https://api.fbi.gov/wanted/v1/list?page=' + page
+    );
     const wantedList = await response.json();
     let key = 'Page' + page;
 
     testContainer[key] = wantedList;
-};
+}
