@@ -1,15 +1,127 @@
+/* Resetting default margin and padding */
+body, html {
+    margin: 0;
+    padding: 0;
+    /* background: url('../Resources/Images/command_center.mp4') center center fixed;
+    background-size: cover; */
+}
+
+/* Import Playfair Display from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+/* Setting default font and background color */
 body {
-    display: grid;
+    font-family: 'Playfair Display', serif;
+    background-color: #0e0e0e; /* Dark background color */
+    color: #c0c0c0; /* Light text color */
+    margin-top: 35px;
 }
 
+/* Styling the video: 100% width and height to cover the entire window */
+.video-container {
+    object-fit: fill;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: hidden;
+    filter: saturate(2.2) ;
+  }
+  .video-container video {
+    /* Make video to at least 100% wide and tall */
+    min-width: 100%; 
+    min-height: 100%; 
+    
+  
+    /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+    width: auto;
+    height: auto;
+  
+
+    
+    /* Center the video */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+/* Styling the example div */
+#EXAMPLE {
+    width: 80%; /* Adjust width as needed */
+    margin: auto; /* Center the div horizontally */
+    background-color: rgba(20, 20, 20, 0.9); /* Semi-transparent darker background */
+    padding: 20px; /* Some padding inside the div */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8); /* Darker box shadow for depth */
+    text-align: center; /* Center-align text */
+    position: relative; /* Required for positioning */
+    top: -50px; /* Bring the entire container down */
+}
+
+/* Container for each page */
 .Page {
-    border: 2px blue solid;
+    position: relative; /* Required for positioning */
+    display: flex; /* Use flexbox to arrange items */
+    flex-wrap: wrap; /* Wrap items to multiple lines */
+    justify-content: center; /* Space items evenly */
+    margin-bottom: 70px; /* Space between pages and next Page_Title */
 }
 
-.Page_Title {
-    border: 2px orange solid;
-}
-
+/* Style for individual items */
 .Item {
-    border: 2px green solid;
+    background-color: rgba(15, 15, 15, 0.85); /* Semi-transparent darker background */
+    padding: 20px; /* Padding around items */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Dark box shadow for depth */
+    height: 200px; /* Increased height for better visual impact */
+    width: calc(28% - 40px); /* Width of each item, minus gap */
+    margin: 20px; /* Increased margin for better spacing */
+    display: flex; /* Use flexbox to control child elements */
+    flex-direction: column; /* Arrange child elements vertically */
+    justify-content: space-between; /* Space content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Center-align text */
+}
+
+/* Title style */
+.Title {
+    font-weight: bold; /* Bold font for title */
+    color: #ffffff; /* Tomato title color for contrast */
+    font-size: 1.4rem; /* Increased font size for better visibility */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.329); /* Add shadow */
+    background: linear-gradient(to right, #4eec26, #e1effa, #4eec26); /* Add highlighting */
+    -webkit-background-clip: text; /* Clip text to background */
+    -webkit-text-fill-color: transparent; /* Make text transparent */
+    -webkit-text-stroke-width: 0.5px; /* Outline width */
+    -webkit-text-stroke-color: #4eec26d3; /* Outline color */
+}
+
+/* Description style */
+.Description {
+    font-style: italic; /* Italic font for description */
+    color: #4eec26; /* Light gray description color */
+    overflow-y: auto; /* Enable vertical scrolling for description */
+    text-align: center; /* Center-align text */
+    margin: 10px 0; /* Adjusted margin for better spacing */
+    padding: 0 13px;
+}
+
+/* Page title style */
+.Page_Title {
+    font-size: 3rem; /* Larger font size for page title */
+    font-weight: bold; /* Bold font for page title */
+    color: #c6e4e4; /* Orange red title color for contrast */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.74); /* Add shadow */
+    background: linear-gradient(to right, #4eec26, #4eec26); /* Add highlighting */
+    -webkit-background-clip: text; /* Clip text to background */
+    -webkit-text-fill-color: transparent; /* Make text transparent */
+    -webkit-text-stroke-width: 0.5px; /* Outline width */
+    -webkit-text-stroke-color: #4eec26d3; /* Outline color */
+    position: absolute; /* Position absolutely */
+    top: -40px;
+    left: 50%; /* Align with center */
+    transform: translateX(-50%); /* Center horizontally */
+    z-index: 1; /* Ensure title appears above flex container */
 }
