@@ -20,9 +20,14 @@ async function scrapeEachPage() {
         for (let j = 0; j < 20; j++) {
             let personTitle = testContainer[whichPage].items[j].title
             let personDesc = testContainer[whichPage].items[j].details
+            let personPicture = testContainer[whichPage].items[j].images[0].original
 
             personTitle = strip(personTitle);
             personDesc = strip(personDesc);
+
+            if ((personTitle == 'null' || personTitle == '') || (personDesc == 'null' || personDesc == '')) {
+                continue;
+            }
 
             if (personTitle == 'null' || personTitle.trim() == '') {
                 personTitle = `<span id="Title_${i}_${j}" class="Description">NO Title PROVIDED</span>`
@@ -39,7 +44,14 @@ async function scrapeEachPage() {
                 personDesc = tempDesc
             };
 
-            let getBlock = personTitle + personDesc
+
+            if (personPicture == 'null') {
+                personPicture = `<span id="Missing_Picture_${i}_${j}" class="Missing_Picture">NO PICTURE PROVIDED</span>`
+            } else {
+                personPicture = `<img id="Picture_${i}_${j}" class="Picture" src="${personPicture}">`
+            };
+
+            let getBlock = personTitle + personPicture + personDesc
 
             allThePeople.push(getBlock);
             // allThePeople.push(testContainer[whichPage].items[j].title);

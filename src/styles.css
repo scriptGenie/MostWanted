@@ -26,7 +26,7 @@ body {
     width: 100%;
     height: 100%; 
     overflow: hidden;
-    filter: saturate(2.2) ;
+    filter: saturate(2.2);
   }
   .video-container video {
     /* Make video to at least 100% wide and tall */
@@ -71,16 +71,15 @@ body {
 
 /* Style for individual items */
 .Item {
-    background-color: rgba(15, 15, 15, 0.85); /* Semi-transparent darker background */
+    background-color: rgba(15, 15, 15, 0.90); /* Semi-transparent darker background */
     padding: 20px; /* Padding around items */
     border-radius: 20px; /* Rounded corners */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Dark box shadow for depth */
-    height: 200px; /* Increased height for better visual impact */
+    height: 400px; /* Increased height for better visual impact */
     width: calc(28% - 40px); /* Width of each item, minus gap */
     margin: 20px; /* Increased margin for better spacing */
     display: flex; /* Use flexbox to control child elements */
     flex-direction: column; /* Arrange child elements vertically */
-    justify-content: space-between; /* Space content vertically */
     align-items: center; /* Center content horizontally */
     text-align: center; /* Center-align text */
 }
@@ -88,7 +87,7 @@ body {
 /* Title style */
 .Title {
     font-weight: bold; /* Bold font for title */
-    color: #ffffff; /* Tomato title color for contrast */
+    color: #f1bb09; /* Tomato title color for contrast */
     font-size: 1.4rem; /* Increased font size for better visibility */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.329); /* Add shadow */
     background: linear-gradient(to right, #4eec26, #e1effa, #4eec26); /* Add highlighting */
@@ -104,8 +103,14 @@ body {
     color: #4eec26; /* Light gray description color */
     overflow-y: auto; /* Enable vertical scrolling for description */
     text-align: center; /* Center-align text */
-    margin: 10px 0; /* Adjusted margin for better spacing */
-    padding: 0 13px;
+    margin: 10px 0px; /* Adjusted margin for better spacing */
+    padding: 0px 13px;
+}
+
+.Picture {
+    margin: 40px 0px 10px 0px;
+    height: 200px;
+    width: 200px;
 }
 
 /* Page title style */
@@ -113,8 +118,9 @@ body {
     font-size: 3rem; /* Larger font size for page title */
     font-weight: bold; /* Bold font for page title */
     color: #c6e4e4; /* Orange red title color for contrast */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.74); /* Add shadow */
-    background: linear-gradient(to right, #4eec26, #4eec26); /* Add highlighting */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.24); /* Add shadow */
+    /* background: linear-gradient(to right, #4eec26, #4eec26); */
+    background: linear-gradient(to right, #f7f7f7, #ffffff); /* Add highlighting */
     -webkit-background-clip: text; /* Clip text to background */
     -webkit-text-fill-color: transparent; /* Make text transparent */
     -webkit-text-stroke-width: 0.5px; /* Outline width */
